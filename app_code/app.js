@@ -6,7 +6,7 @@ const AWS = require('aws-sdk');
 const app = express();
 const port = process.env.PORT || 3000;
 
-//AWS.config.update({ region: 'us-east-1' }); // Adjust if needed
+AWS.config.update({ region: 'us-east-1' }); // Adjust if needed
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 const TABLE_NAME = 'boot4-us-east-1-dev-table'; // Replace with your actual table name
 
