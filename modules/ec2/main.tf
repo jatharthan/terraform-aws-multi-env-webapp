@@ -94,9 +94,9 @@ resource "aws_lb_listener" "external_web_listener" {
 
 # Auto Scaling Group for Web Tier
 resource "aws_autoscaling_group" "web_asg" {
-  desired_capacity          = 0
-  min_size                  = 0
-  max_size                  = 0
+  desired_capacity          = 2
+  min_size                  = 2
+  max_size                  = 3
   name                      = "${var.project_prefix}-${var.region}-${var.environment}-web-asg"
   vpc_zone_identifier       = var.public_web_subnet_ids
 
