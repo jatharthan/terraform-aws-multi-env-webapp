@@ -1,0 +1,7 @@
+project_prefix  = "boot4"
+region          = "us-east-1"
+vpc_cidr_block  = "10.0.16.0/20"
+environment     = "staging"
+ami             = "ami-028078b00cb6e98cb"
+instance_type   = "t2.micro"
+aws_iam_instance_profile = "boot4-EC2AdminAccessProfile"
