@@ -19,7 +19,7 @@ app.get('/', async (req, res) => {
       Last name: <input name="last_name" required><br>
       <button type="submit">Submit</button>
     </form>
-    <hr><h3>Submitted Data:</h3><ul>`;
+    <hr><h3>Submitted Data for review:</h3><ul>`;
 
   try {
     const data = await dynamodb.scan({ TableName: TABLE_NAME }).promise();

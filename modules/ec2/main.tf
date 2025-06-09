@@ -23,6 +23,7 @@ resource "aws_launch_template" "web_launch_template" {
 
   user_data = base64encode(templatefile("${path.module}/scripts/web-userdata.sh", {
     project_prefix = var.project_prefix
+    git_sha        = var.git_sha
   }))
 
   tag_specifications {
@@ -96,7 +97,7 @@ resource "aws_lb_listener" "external_web_listener" {
 resource "aws_autoscaling_group" "web_asg" {
   desired_capacity          = 2
   min_size                  = 2
-  max_size                  = 3
+  max_size                  = 4
   name                      = "${var.project_prefix}-${var.region}-${var.environment}-web-asg"
   vpc_zone_identifier       = var.public_web_subnet_ids
 
@@ -122,5 +123,16 @@ resource "aws_autoscaling_group" "web_asg" {
 
   lifecycle {
     create_before_destroy = true
+  }
+
+#Rolling update with rollback ####
+  instance_refresh {
+    strategy = "Rolling"
+    triggers = ["launch_template"]  # Triggers when launch template is updated
+
+    preferences {
+      min_healthy_percentage = 50
+      instance_warmup        = 120
+    }
   }
 }

@@ -43,3 +43,8 @@ variable "aws_iam_instance_profile" {
   description = "instance profile"
   type        = string
 }
+
+variable "git_sha" {
+  description = "Git commit SHA for triggering LT updates"
+  type        = string
+}
