@@ -134,7 +134,7 @@ resource "aws_autoscaling_group" "web_asg" {
 #Rolling update with rollback ####
   instance_refresh {
     strategy = "Rolling"
-    triggers = [var.git_sha]  # Forces ASG refresh on SHA change
+    triggers = ["launch_template"]
 
     preferences {
       min_healthy_percentage = 50
