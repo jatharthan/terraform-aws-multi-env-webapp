@@ -121,6 +121,12 @@ resource "aws_autoscaling_group" "web_asg" {
     propagate_at_launch = true
   }
 
+  tag {
+    key                 = "deployment-sha"
+    value               = var.git_sha
+    propagate_at_launch = true
+  }
+
   lifecycle {
     create_before_destroy = true
   }
@@ -128,7 +134,7 @@ resource "aws_autoscaling_group" "web_asg" {
 #Rolling update with rollback ####
   instance_refresh {
     strategy = "Rolling"
-    triggers = ["launch_template"]  # Triggers when launch template is updated
+    triggers = [var.git_sha]  # Forces ASG refresh on SHA change
 
     preferences {
       min_healthy_percentage = 50
