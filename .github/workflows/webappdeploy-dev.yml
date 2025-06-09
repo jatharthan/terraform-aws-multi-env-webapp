@@ -3,7 +3,7 @@ name: Terraform Deploy - Dev
 on:
   push:
     paths:
-      - 'modules/ec2/**'
+      - 'app_code/**'
     branches:
       - master  # Adjust if you use a different branch
 
