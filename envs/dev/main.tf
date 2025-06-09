@@ -22,6 +22,7 @@ module "ec2" {
   public_lb_sg_id          = module.networking.public_lb_sg_id
   environment    = var.environment
   instance_type = var.instance_type
+  git_sha = var.git_sha
 }
 
 module "dynamodb" {
