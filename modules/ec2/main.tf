@@ -30,6 +30,7 @@ resource "aws_launch_template" "web_launch_template" {
     resource_type = "instance"
     tags = {
       Name = "${var.project_prefix}-${var.region}-${var.environment}-web-instance"
+      GitSHA = var.git_sha
     }
   }
 
