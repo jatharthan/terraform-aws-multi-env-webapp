@@ -30,7 +30,7 @@ resource "aws_launch_template" "web_launch_template" {
     resource_type = "instance"
     tags = {
       Name = "${var.project_prefix}-${var.region}-${var.environment}-web-instance"
-      GitSHA = var.git_sha
+      # GitSHA = var.git_sha
     }
   }
 
@@ -40,7 +40,7 @@ resource "aws_launch_template" "web_launch_template" {
 
   tags = {
     Name = "${var.project_prefix}-${var.region}-${var.environment}-web-launch-template"
-    GitSHA   = var.git_sha  # ✅ Add this tag purely to force diff when SHA changes
+    # GitSHA   = var.git_sha
   }
 }
 
@@ -124,11 +124,11 @@ resource "aws_autoscaling_group" "web_asg" {
     propagate_at_launch = true
   }
 
-  tag {
-    key                 = "deployment-sha"
-    value               = var.git_sha
-    propagate_at_launch = true
-  }
+  # tag {
+  #   key                 = "deployment-sha"
+  #   value               = var.git_sha
+  #   propagate_at_launch = true
+  # }
 
   lifecycle {
     create_before_destroy = true
