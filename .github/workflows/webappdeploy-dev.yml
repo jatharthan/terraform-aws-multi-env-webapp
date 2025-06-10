@@ -1,4 +1,4 @@
-name: Terraform Deploy - Dev
+name: Terraform webappDeploy - Dev
 
 on:
   push:
