@@ -1,11 +1,7 @@
 name: Terraform webappDeploy - staging
 
 on:
-  push:
-    paths:
-      - 'app_code/**'
-    branches:
-      - master  # Adjust if you use a different branch
+  workflow_dispatch:  # Manual trigger only
 
 jobs:
   terraform:
