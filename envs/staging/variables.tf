@@ -25,3 +25,8 @@ variable "instance_type" {
 variable "aws_iam_instance_profile" {
   description = "instance_type"
 }
+
+variable "git_sha" {
+  description = "Git commit SHA for triggering LT updates"
+  type        = string
+}
