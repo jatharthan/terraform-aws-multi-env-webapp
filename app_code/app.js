@@ -15,6 +15,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.get('/', async (req, res) => {
   let html = `
     <h2>Submit Your Details!test2</h2>
+    <h2>Testing CI/CD app deployment</h2>
     <form method="post" action="/submit">
       First name: <input name="first_name" required><br>
       Last name: <input name="last_name" required><br>
