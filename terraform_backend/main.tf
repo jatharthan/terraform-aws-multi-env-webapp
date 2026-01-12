@@ -1,6 +1,6 @@
 # Create the S3 bucket for storing Terraform state
 resource "aws_s3_bucket" "tf_state" {
-  bucket = "${var.project_prefix}-tf-state-ncpl-jatha" # Must be globally unique
+  bucket = "${var.project_prefix}-tf-state-jatha" # Must be globally unique
 
   tags = {
     Name        = "Terraform State Bucket"
